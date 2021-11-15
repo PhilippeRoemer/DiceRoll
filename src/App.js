@@ -10,9 +10,6 @@ function App() {
     window.onload = function () {
         var fund = 1000;
         document.getElementById("currentAmount").innerHTML = fund;
-        console.log(fund);
-        console.log("test");
-        console.log(process.env);
     };
 
     function rollDice() {
@@ -34,7 +31,6 @@ function App() {
             alert("You can't bet more than you have.");
         } else {
             document.getElementById("userDice").src = "/images/dice/dice_" + UserScore + ".png";
-
             document.getElementById("computerDice").src = "/images/dice/dice_" + ComputerScore + ".png";
 
             if (UserScore > ComputerScore) {
