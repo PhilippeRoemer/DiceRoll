@@ -1,0 +1,86 @@
+html {
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: rgb(97, 255, 168, 1);
+    background: linear-gradient(135deg, rgba(97, 255, 168, 1) 0%, rgba(0, 38, 97, 1) 100%);
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.betInput {
+    padding: 5px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: #cccccc;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 5px rgba(66, 66, 66, 0.75);
+    text-align: center;
+}
+
+.btn {
+    background: #ff00ff;
+    background-image: -webkit-linear-gradient(top, #ff00ff, #09d4e3);
+    background-image: -moz-linear-gradient(top, #ff00ff, #09d4e3);
+    background-image: -ms-linear-gradient(top, #ff00ff, #09d4e3);
+    background-image: -o-linear-gradient(top, #ff00ff, #09d4e3);
+    background-image: linear-gradient(to bottom, #ff00ff, #09d4e3);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    border: solid #3800fe 3px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}
+
+.rollDiceBtn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+}
+
+.gif {
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.58);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.58);
+}

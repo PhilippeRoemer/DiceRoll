@@ -8,19 +8,23 @@ function App() {
     const [userDice, setUserDice] = useState([]);
     const [computerDice, setComputerDice] = useState([]);
     const [giphy, setGiphy] = useState([]);
+    const api_key = process.env.REACT_APP_API_KEY;
 
     window.onload = function () {
         var fund = 1000;
         document.getElementById("currentAmount").innerHTML = fund;
+
         const randomDiceUser = Math.floor(Math.random() * 6) + 1;
         const randomDiceComputer = Math.floor(Math.random() * 6) + 1;
+
         setUserDice("/images/dice/dice_" + randomDiceUser + ".png");
         setComputerDice("/images/dice/dice_" + randomDiceComputer + ".png");
+        axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=good-luck&rating=g").then((res) => {
+            setGiphy(res.data.data.images.downsized_large.url);
+        });
     };
 
     function rollDice() {
-        const api_key = process.env.REACT_APP_API_KEY;
-
         const UserScore = Math.floor(Math.random() * 6) + 1;
         const ComputerScore = Math.floor(Math.random() * 6) + 1;
         const CurrentAmount = document.getElementById("currentAmount").innerHTML;
