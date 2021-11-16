@@ -5,6 +5,8 @@ import "./App.css";
 require("dotenv").config();
 
 function App() {
+    const [userDice, setUserDice] = useState([]);
+    const [computerDice, setComputerDice] = useState([]);
     const [giphy, setGiphy] = useState([]);
 
     window.onload = function () {
@@ -14,6 +16,7 @@ function App() {
 
     function rollDice() {
         const api_key = process.env.REACT_APP_API_KEY;
+
         const UserScore = Math.floor(Math.random() * 6) + 1;
         const ComputerScore = Math.floor(Math.random() * 6) + 1;
         const CurrentAmount = document.getElementById("currentAmount").innerHTML;
@@ -30,14 +33,12 @@ function App() {
         } else if (bet > currentFunds) {
             alert("You can't bet more than you have.");
         } else {
-            document.getElementById("userDice").src = "/images/dice/dice_" + UserScore + ".png";
-            document.getElementById("computerDice").src = "/images/dice/dice_" + ComputerScore + ".png";
-
+            setUserDice("/images/dice/dice_" + UserScore + ".png");
+            setComputerDice("/images/dice/dice_" + ComputerScore + ".png");
             if (UserScore > ComputerScore) {
                 axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=winner&rating=g").then((res) => {
                     setGiphy(res.data.data.images.downsized_large.url);
                 });
-
                 document.getElementById("outcome").innerHTML = "You Won :)";
                 document.getElementById("currentAmount").innerHTML = addFunds;
                 document.getElementById("userBet").value = "";
@@ -74,12 +75,12 @@ function App() {
             <div class="row">
                 <div class="column center">
                     <h2>You</h2>
-                    <img id="userDice" />
+                    <img id="userDice" src={process.env.PUBLIC_URL + userDice} />
                 </div>
 
                 <div class="column center">
                     <h2>Computer</h2>
-                    <img id="computerDice" />
+                    <img id="computerDice" src={process.env.PUBLIC_URL + computerDice} />
                 </div>
             </div>
             <p id="outcome" className="center"></p>
