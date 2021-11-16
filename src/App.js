@@ -12,6 +12,10 @@ function App() {
     window.onload = function () {
         var fund = 1000;
         document.getElementById("currentAmount").innerHTML = fund;
+        const randomDiceUser = Math.floor(Math.random() * 6) + 1;
+        const randomDiceComputer = Math.floor(Math.random() * 6) + 1;
+        setUserDice("/images/dice/dice_" + randomDiceUser + ".png");
+        setComputerDice("/images/dice/dice_" + randomDiceComputer + ".png");
     };
 
     function rollDice() {
