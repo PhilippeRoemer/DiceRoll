@@ -67,6 +67,12 @@ html {
     display: block;
 }
 
+.diceWinner {
+    padding: 5px;
+    background-color: #d11eff;
+    border-radius: 25px;
+}
+
 .row {
     display: flex;
 }

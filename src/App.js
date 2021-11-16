@@ -47,10 +47,14 @@ function App() {
                 axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=winner&rating=g").then((res) => {
                     setGiphy(res.data.data.images.downsized_large.url);
                 });
+                document.getElementById("userDice").classList.add("diceWinner");
+                document.getElementById("computerDice").classList.remove("diceWinner");
                 document.getElementById("outcome").innerHTML = "You Won :)";
                 document.getElementById("currentAmount").innerHTML = addFunds;
                 document.getElementById("userBet").value = "";
             } else if (UserScore === ComputerScore) {
+                document.getElementById("computerDice").classList.add("diceWinner");
+                document.getElementById("userDice").classList.add("diceWinner");
                 document.getElementById("outcome").innerHTML = "It's a Tie!";
                 document.getElementById("userBet").value = "";
                 axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=tie+score&rating=g").then((res) => {
@@ -63,6 +67,8 @@ function App() {
                 document.getElementById("outcome").innerHTML = "You Lost :(";
                 document.getElementById("currentAmount").innerHTML = removeFunds;
                 document.getElementById("userBet").value = "";
+                document.getElementById("computerDice").classList.add("diceWinner");
+                document.getElementById("userDice").classList.remove("diceWinner");
             }
         }
     }
