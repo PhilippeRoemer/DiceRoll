@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     height: 100%;
     -webkit-background-size: cover;
@@ -13,6 +18,9 @@ body {
     font-family: "Cairo", sans-serif;
     color: #ffffff;
     text-shadow: 0px 2px 2px #9100fe;
+    display: block;
+    margin: auto;
+    width: 50%;
 }
 
 .row {
@@ -32,7 +40,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    margin-top: 1%;
+    margin-top: 4%;
 }
 
 .betInput {
@@ -64,6 +72,7 @@ body {
     padding: 10px 20px 10px 20px;
     border: solid #3800fe 3px;
     text-decoration: none;
+    margin: 10px;
 }
 
 .btn:hover {
