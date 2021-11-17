@@ -37,38 +37,44 @@ function App() {
         if (bet == 0 || NaN || undefined) {
             alert("Please enter a number.");
         } else if (currentFunds === 0) {
+            /* If you run out of funds */
             document.getElementById("fundsDepleted").innerHTML = "It looks like you're out of money. Go do something else.";
         } else if (bet > currentFunds) {
+            /* If you bet more than you have*/
             alert("You can't bet more than you have.");
         } else {
+            /* Output dice images */
             setUserDice("/images/dice/dice_" + UserScore + ".png");
             setComputerDice("/images/dice/dice_" + ComputerScore + ".png");
             if (UserScore > ComputerScore) {
+                /* If the user's roll is higher than the computer's */
                 axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=winner&rating=g").then((res) => {
                     setGiphy(res.data.data.images.downsized_large.url);
                 });
                 document.getElementById("userDice").classList.add("diceWinner");
                 document.getElementById("computerDice").classList.remove("diceWinner");
-                document.getElementById("outcome").innerHTML = "You Won :)";
+                document.getElementById("outcome").src = process.env.PUBLIC_URL + "/images/won.png";
                 document.getElementById("currentAmount").innerHTML = addFunds;
                 document.getElementById("userBet").value = "";
             } else if (UserScore === ComputerScore) {
-                document.getElementById("computerDice").classList.add("diceWinner");
-                document.getElementById("userDice").classList.add("diceWinner");
-                document.getElementById("outcome").innerHTML = "It's a Tie!";
-                document.getElementById("userBet").value = "";
+                /* If it's a tie score */
                 axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=tie+score&rating=g").then((res) => {
                     setGiphy(res.data.data.images.downsized_large.url);
                 });
+                document.getElementById("userDice").classList.add("diceWinner");
+                document.getElementById("computerDice").classList.add("diceWinner");
+                document.getElementById("outcome").src = process.env.PUBLIC_URL + "/images/tie.png";
+                document.getElementById("userBet").value = "";
             } else {
+                /* If the computer's roll is higher than the user's */
                 axios.get("https://api.giphy.com/v1/gifs/random?api_key=" + api_key + "&tag=loser&rating=g").then((res) => {
                     setGiphy(res.data.data.images.downsized_large.url);
                 });
-                document.getElementById("outcome").innerHTML = "You Lost :(";
+                document.getElementById("userDice").classList.remove("diceWinner");
+                document.getElementById("computerDice").classList.add("diceWinner");
+                document.getElementById("outcome").src = process.env.PUBLIC_URL + "/images/lost.png";
                 document.getElementById("currentAmount").innerHTML = removeFunds;
                 document.getElementById("userBet").value = "";
-                document.getElementById("computerDice").classList.add("diceWinner");
-                document.getElementById("userDice").classList.remove("diceWinner");
             }
         }
     }
@@ -97,7 +103,7 @@ function App() {
                     <img id="computerDice" src={process.env.PUBLIC_URL + computerDice} />
                 </div>
             </div>
-            <p id="outcome" className="center"></p>
+            <img id="outcome" className="outcomeText" />
             <img src={giphy} className="gif center" />
             <br />
         </div>
