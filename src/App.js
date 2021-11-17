@@ -94,12 +94,12 @@ function App() {
             </div>
             <div class="row">
                 <div class="column center">
-                    <h2>You</h2>
+                    <h1>You</h1>
                     <img id="userDice" src={process.env.PUBLIC_URL + userDice} />
                 </div>
 
                 <div class="column center">
-                    <h2>Computer</h2>
+                    <h1>Computer</h1>
                     <img id="computerDice" src={process.env.PUBLIC_URL + computerDice} />
                 </div>
             </div>
